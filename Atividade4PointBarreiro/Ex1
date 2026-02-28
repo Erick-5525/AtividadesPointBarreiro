@@ -1,0 +1,53 @@
+class ContaBancaria {
+    #saldo;
+    #titular;
+    #historicoEntradas;
+    #historicoSaidas;
+
+    constructor(titular, saldoInicial = 0) {
+        this.#titular = titular;
+        this.#saldo = saldoInicial;
+        this.#historicoEntradas = [];
+        this.#historicoSaidas = [];
+    }
+
+    consultarSaldo() {
+        return this.#saldo;
+    }
+
+    depositar(valor) {
+        if (valor <= 0) {
+            return "Valor de depósito inválido.";
+        }
+
+        this.#saldo += valor;
+        this.#historicoEntradas.push(valor);
+        return "Depósito realizado com sucesso.";
+    }
+
+    sacar(valor) {
+        if (valor <= 0) {
+            return "Valor de saque inválido.";
+        }
+
+        if (valor > this.#saldo) {
+            return "Saldo insuficiente.";
+        }
+
+        this.#saldo -= valor;
+        this.#historicoSaidas.push(valor);
+        return "Saque realizado com sucesso.";
+    }
+
+    consultarHistoricoEntradas() {
+        return this.#historicoEntradas;
+    }
+
+    consultarHistoricoSaidas() {
+        return this.#historicoSaidas;
+    }
+
+    consultarTitular() {
+        return this.#titular;
+    }
+}

@@ -1,0 +1,44 @@
+class Animal {
+    constructor(nome, patas) {
+        this.nome = nome;
+        this.patas = patas;
+    }
+
+    emitirSom() {
+        return "Som genérico";
+    }
+
+    getNome() {
+        return this.nome;
+    }
+}
+
+class Cachorro extends Animal {
+    constructor(nome) {
+        super(nome, 4);
+    }
+
+    emitirSom() {
+        return "Au au";
+    }
+}
+
+class Gato extends Animal {
+    constructor(nome) {
+        super(nome, 4);
+    }
+
+    emitirSom() {
+        return "Miau";
+    }
+}
+
+class Passaro extends Animal {
+    constructor(nome) {
+        super(nome, 2);
+    }
+
+    emitirSom() {
+        return "Piu piu";
+    }
+}

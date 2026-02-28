@@ -1,10 +1,12 @@
-//5: Número harmônico H(n)
-
-let n = Number(prompt("Digite um valor positivo:"));
-let H = 0;
-
-for (let i = 1; i <= n; i++) {
-    H += 1 / i;
+//7: Aumento de preço
+let precoAntigo = Number(prompt("Digite o preço antigo:"));
+let precoNovo;
+if (precoAntigo <= 50) {
+ precoNovo = precoAntigo * 1.05;
+} else if (precoAntigo <= 100) {
+ precoNovo = precoAntigo * 1.10;
+} else {
+ precoNovo = precoAntigo * 1.15;
 }
-
-console.log("H(" + n + ") =", H.toFixed(4));
+console.log("Preço antigo: R$", precoAntigo.toFixed(2));
+console.log("Preço novo: R$", precoNovo.toFixed(2));

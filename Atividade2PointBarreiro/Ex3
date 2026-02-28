@@ -1,0 +1,10 @@
+//3: Soma dos quadrados de 1 até n
+
+let n = Number(prompt("Digite um valor:"));
+let soma = 0;
+
+for (let i = 1; i <= n; i++) {
+    soma += i * i;
+}
+
+console.log("Soma dos quadrados:", soma);

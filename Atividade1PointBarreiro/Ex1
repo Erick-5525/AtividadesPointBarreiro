@@ -1,53 +1,10 @@
-//1: Ler 10 números e mostrar o menor e o maior
-let menor;
-let maior;
-
-for (let i = 1; i <= 10; i++) {
-    let num = Number(prompt(`Digite o ${i}º número:`));
-
-    if (i === 1) {
-        menor = num;
-        maior = num;
-    } else {
-        if (num < menor) menor = num;
-        if (num > maior) maior = num;
-    }
+//1: Maior entre dois números
+let n1 = Number(prompt("Digite o primeiro número:"));
+let n2 = Number(prompt("Digite o segundo número:"));
+if (n1 > n2) {
+ console.log("O maior número é:", n1);
+} else if (n2 > n1) {
+ console.log("O maior número é:", n2);
+} else {
+ console.log("Os números são iguais.");
 }
-
-console.log("Menor valor:", menor);
-console.log("Maior valor:", maior);
-
-//3: Soma dos quadrados de 1 até n
-
-let n = Number(prompt("Digite um valor:"));
-let soma = 0;
-
-for (let i = 1; i <= n; i++) {
-    soma += i * i;
-}
-
-console.log("Soma dos quadrados:", soma);
-
-//__________________________________________________
-//4: Fatorial de n (n!)
-
-let n = Number(prompt("Digite um valor:"));
-let fatorial = 1;
-
-for (let i = n; i >= 1; i--) {
-    fatorial *= i;
-}
-
-console.log(`${n}! = ${fatorial}`);
-
-//__________________________________________________
-//5: Número harmônico H(n)
-
-let n = Number(prompt("Digite um valor positivo:"));
-let H = 0;
-
-for (let i = 1; i <= n; i++) {
-    H += 1 / i;
-}
-
-console.log("H(" + n + ") =", H.toFixed(4));

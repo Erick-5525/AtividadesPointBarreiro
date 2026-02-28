@@ -1,0 +1,13 @@
+//2: Sequência textual de 1 até n
+
+let n = Number(prompt("Digite um valor positivo:"));
+let sequencia = "";
+
+for (let i = 1; i <= n; i++) {
+    sequencia += i;
+    if (i < n) {
+        sequencia += " + ";
+    }
+}
+
+console.log(sequencia);

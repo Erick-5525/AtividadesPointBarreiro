@@ -1,0 +1,8 @@
+//3: Empréstimo
+let salario = Number(prompt("Digite o salário:"));
+let prestacao = Number(prompt("Digite o valor da prestação:"));
+if (prestacao > salario * 0.2) {
+ console.log("Empréstimo não concedido");
+} else {
+ console.log("Empréstimo concedido");
+}

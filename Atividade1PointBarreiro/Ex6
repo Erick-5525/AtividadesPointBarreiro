@@ -1,0 +1,8 @@
+//6: Aposentadoria
+let idade = Number(prompt("Digite a idade:"));
+let tempoServico = Number(prompt("Digite o tempo de serviço (anos):"));
+if (idade >= 65 || tempoServico >= 30 || (idade >= 60 && tempoServico >= 25)) {
+ console.log("Pode se aposentar");
+} else {
+ console.log("Não pode se aposentar");
+}

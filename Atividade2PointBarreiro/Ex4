@@ -1,0 +1,10 @@
+//4: Fatorial de n (n!)
+
+let n = Number(prompt("Digite um valor:"));
+let fatorial = 1;
+
+for (let i = n; i >= 1; i--) {
+    fatorial *= i;
+}
+
+console.log(`${n}! = ${fatorial}`);

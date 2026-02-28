@@ -1,0 +1,59 @@
+class Endereco {
+    #logradouro;
+    #numero;
+    #bairro;
+    #cidade;
+    #estado;
+    #cep;
+
+    constructor(logradouro, numero, bairro, cidade, estado, cep) {
+        this.#logradouro = logradouro;
+        this.#numero = numero;
+        this.#bairro = bairro;
+        this.#cidade = cidade;
+        this.#estado = estado;
+        this.#cep = cep;
+    }
+
+    getCidade() {
+        return this.#cidade;
+    }
+}
+
+class Pessoa {
+    #nome;
+    #cpf;
+    #endereco;
+
+    constructor(nome, cpf, endereco) {
+        this.#nome = nome;
+        this.#cpf = cpf;
+        this.#endereco = endereco;
+    }
+
+    getNome() {
+        return this.#nome;
+    }
+
+    getCidade() {
+        return this.#endereco.getCidade();
+    }
+}
+
+const endereco1 = new Endereco(
+    "Rua das Flores",
+    123,
+    "Centro",
+    "Contagem",
+    "MG",
+    "32000-000"
+);
+
+const pessoa1 = new Pessoa(
+    "Erick Ferreira",
+    "123.456.789-00",
+    endereco1
+);
+
+console.log(pessoa1.getNome());
+console.log(pessoa1.getCidade());

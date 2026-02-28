@@ -1,0 +1,10 @@
+//4: Média harmônica
+let a = Number(prompt("Digite o primeiro número:"));
+let b = Number(prompt("Digite o segundo número:"));
+let c = Number(prompt("Digite o terceiro número:"));
+if (a === 0 || b === 0 || c === 0) {
+ console.log("Não é possível calcular a média.");
+} else {
+ let mediaHarmonica = 3 / (1/a + 1/b + 1/c);
+ console.log("Média harmônica:", mediaHarmonica.toFixed(2));
+}
