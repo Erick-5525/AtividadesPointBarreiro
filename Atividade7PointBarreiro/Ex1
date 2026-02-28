@@ -1,0 +1,82 @@
+class ValorInvalidoError extends Error {
+    constructor(mensagem) {
+        super(mensagem);
+        this.name = "ValorInvalidoError";
+    }
+}
+
+class SaldoInsuficienteError extends Error {
+    constructor(mensagem) {
+        super(mensagem);
+        this.name = "SaldoInsuficienteError";
+    }
+}
+
+class ContaBancaria {
+    #saldo;
+    #titular;
+    #historicoEntradas;
+    #historicoSaidas;
+
+    constructor(titular, saldoInicial = 0) {
+        if (saldoInicial < 0) {
+            throw new ValorInvalidoError("Saldo inicial não pode ser negativo.");
+        }
+
+        this.#titular = titular;
+        this.#saldo = saldoInicial;
+        this.#historicoEntradas = [];
+        this.#historicoSaidas = [];
+    }
+
+    consultarSaldo() {
+        return this.#saldo;
+    }
+
+    depositar(valor) {
+        if (valor <= 0) {
+            throw new ValorInvalidoError("Valor de depósito inválido.");
+        }
+
+        this.#saldo += valor;
+        this.#historicoEntradas.push(valor);
+    }
+
+    sacar(valor) {
+        if (valor <= 0) {
+            throw new ValorInvalidoError("Valor de saque inválido.");
+        }
+
+        if (valor > this.#saldo) {
+            throw new SaldoInsuficienteError("Saldo insuficiente para saque.");
+        }
+
+        this.#saldo -= valor;
+        this.#historicoSaidas.push(valor);
+    }
+
+    consultarHistoricoEntradas() {
+        return this.#historicoEntradas;
+    }
+
+    consultarHistoricoSaidas() {
+        return this.#historicoSaidas;
+    }
+}
+
+try {
+    const conta = new ContaBancaria("Erick Ferreira", 500);
+
+    conta.depositar(200);
+    conta.sacar(100);
+    conta.sacar(800); //Erro
+
+} catch (erro) {
+    if (erro instanceof ValorInvalidoError) {
+        console.log("Erro de valor:", erro.message);
+    } else if (erro instanceof SaldoInsuficienteError) {
+        console.log("Erro de saldo:", erro.message);
+    } else {
+        console.log("Erro inesperado:", erro.message);
+    }
+}

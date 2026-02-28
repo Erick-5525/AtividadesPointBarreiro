@@ -1,0 +1,89 @@
+let animais = [];
+
+function cadastrarCachorro() {
+    let nome = prompt("Nome do cachorro:");
+    if (!nome) return alert("Nome inválido!");
+    animais.push(new Cachorro(nome));
+}
+
+function cadastrarGato() {
+    let nome = prompt("Nome do gato:");
+    if (!nome) return alert("Nome inválido!");
+    animais.push(new Gato(nome));
+}
+
+function cadastrarPassaro() {
+    let nome = prompt("Nome do pássaro:");
+    if (!nome) return alert("Nome inválido!");
+    animais.push(new Passaro(nome));
+}
+
+function cadastrarOutroAnimal() {
+    let nome = prompt("Nome do animal:");
+    let patas = parseInt(prompt("Número de patas:"));
+
+    if (!nome || isNaN(patas) || patas < 0) {
+        alert("Dados inválidos!");
+        return;
+    }
+
+    animais.push(new Animal(nome, patas));
+}
+
+function listarAnimais() {
+    if (animais.length === 0) {
+        alert("Nenhum animal cadastrado.");
+        return;
+    }
+
+    let lista = "Animais cadastrados:\n";
+    animais.forEach((animal, index) => {
+        lista += `${index + 1} - ${animal.getNome()}\n`;
+    });
+
+    alert(lista);
+}
+
+function emitirSons() {
+    if (animais.length === 0) {
+        alert("Nenhum animal cadastrado.");
+        return;
+    }
+
+    let sons = "Sons dos animais:\n";
+    animais.forEach(animal => {
+        sons += `${animal.getNome()}: ${animal.emitirSom()}\n`;
+    });
+
+    alert(sons);
+}
+
+function menu() {
+    let opcao;
+
+    do {
+        opcao = prompt(
+            "MENU\n" +
+            "1 - Cadastrar Cachorro\n" +
+            "2 - Cadastrar Gato\n" +
+            "3 - Cadastrar Pássaro\n" +
+            "4 - Cadastrar outro Animal\n" +
+            "5 - Listar todos os animais\n" +
+            "6 - Emitir sons dos animais\n" +
+            "0 - Sair"
+        );
+
+        switch (opcao) {
+            case "1": cadastrarCachorro(); break;
+            case "2": cadastrarGato(); break;
+            case "3": cadastrarPassaro(); break;
+            case "4": cadastrarOutroAnimal(); break;
+            case "5": listarAnimais(); break;
+            case "6": emitirSons(); break;
+            case "0": alert("Encerrando..."); break;
+            default: alert("Opção inválida!");
+        }
+    } while (opcao !== "0");
+}
+
+menu();

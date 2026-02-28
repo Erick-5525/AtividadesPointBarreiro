@@ -1,0 +1,10 @@
+//5: Número harmônico H(n)
+
+let n = Number(prompt("Digite um valor positivo:"));
+let H = 0;
+
+for (let i = 1; i <= n; i++) {
+    H += 1 / i;
+}
+
+console.log("H(" + n + ") =", H.toFixed(4));

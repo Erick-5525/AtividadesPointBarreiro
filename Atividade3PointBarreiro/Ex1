@@ -1,0 +1,107 @@
+let itens = [];
+
+function adicionarItem(arr) {
+    let item = prompt("Digite o item a ser adicionado:");
+
+    if (item === null || item.trim() === "") {
+        alert("Item inválido!");
+        return;
+    }
+
+    arr.push(item);
+    alert("Item adicionado com sucesso!");
+}
+
+function mostrarItens(arr) {
+    if (arr.length === 0) {
+        alert("Nenhum item cadastrado.");
+        return;
+    }
+
+    let lista = "Itens cadastrados:\n";
+    for (let i = 0; i < arr.length; i++) {
+        lista += i + " - " + arr[i] + "\n";
+    }
+
+    alert(lista);
+}
+
+function atualizarItem(arr) {
+    if (arr.length === 0) {
+        alert("Não há itens para atualizar.");
+        return;
+    }
+
+    let indice = parseInt(prompt("Digite o índice do item que deseja alterar:"));
+
+    if (isNaN(indice) || indice < 0 || indice >= arr.length) {
+        alert("Posição inválida!");
+        return;
+    }
+
+    let novoValor = prompt("Digite o novo valor:");
+
+    if (novoValor === null || novoValor.trim() === "") {
+        alert("Valor inválido!");
+        return;
+    }
+
+    arr[indice] = novoValor;
+    alert("Item atualizado com sucesso!");
+}
+
+function removerItem(arr) {
+    if (arr.length === 0) {
+        alert("Não há itens para remover.");
+        return;
+    }
+
+    let opcao = prompt("Digite 1 para remover o primeiro item ou 2 para remover o último:");
+
+    if (opcao === "1") {
+        arr.shift();
+        alert("Primeiro item removido.");
+    } else if (opcao === "2") {
+        arr.pop();
+        alert("Último item removido.");
+    } else {
+        alert("Opção inválida!");
+    }
+}
+
+function menu() {
+    let opcao;
+
+    do {
+        opcao = prompt(
+            "MENU\n" +
+            "1 - Adicionar item\n" +
+            "2 - Mostrar itens\n" +
+            "3 - Atualizar item\n" +
+            "4 - Remover item\n" +
+            "0 - Sair"
+        );
+
+        switch (opcao) {
+            case "1":
+                adicionarItem(itens);
+                break;
+            case "2":
+                mostrarItens(itens);
+                break;
+            case "3":
+                atualizarItem(itens);
+                break;
+            case "4":
+                removerItem(itens);
+                break;
+            case "0":
+                alert("Saindo do sistema...");
+                break;
+            default:
+                alert("Opção inválida!");
+        }
+    } while (opcao !== "0");
+}
+
+menu();

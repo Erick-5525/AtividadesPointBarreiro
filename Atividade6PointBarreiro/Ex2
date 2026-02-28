@@ -1,0 +1,57 @@
+class Departamento {
+    #nome;
+
+    constructor(nome) {
+        this.#nome = nome;
+    }
+
+    getNome() {
+        return this.#nome;
+    }
+}
+
+class Empresa {
+    #nome;
+    #departamentos;
+
+    constructor(nome) {
+        this.#nome = nome;
+        this.#departamentos = [];
+    }
+
+    getNome() {
+        return this.#nome;
+    }
+
+    adicionarDepartamento(departamento) {
+        this.#departamentos.push(departamento);
+    }
+
+    listarDepartamentos() {
+        if (this.#departamentos.length === 0) {
+            console.log("Nenhum departamento cadastrado.");
+            return;
+        }
+
+        console.log(`Departamentos da empresa ${this.#nome}:`);
+        this.#departamentos.forEach((dep, index) => {
+            console.log(`${index + 1} - ${dep.getNome()}`);
+        });
+    }
+}
+
+
+const depTI = new Departamento("TI");
+const depRH = new Departamento("RH");
+const depFinancas = new Departamento("Finanças");
+
+
+const empresa = new Empresa("IFMG");
+
+
+empresa.adicionarDepartamento(depTI);
+empresa.adicionarDepartamento(depRH);
+empresa.adicionarDepartamento(depFinancas);
+
+
+empresa.listarDepartamentos();
